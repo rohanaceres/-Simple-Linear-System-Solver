@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Geronimus.Core
+namespace Geronimus.Core.Model
 {
     public class LinearEquation
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Geronimus.Core
+namespace Geronimus.Core.Model
 {
     public class LinearSystem
     {

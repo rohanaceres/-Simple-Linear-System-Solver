@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Geronimus.Core.Model;
+using System;
 
 namespace Geronimus.Core.Methods
 {
-    internal class JacobiMethod : ILinearSystemMethod
+    public class JacobiMethod : AbstractMethod
     {
-        public LinearSystemResult SolveIt(LinearSystem linearSystem)
+        public override LinearSystemResult SolveIt()
         {
             throw new NotImplementedException();
         }
