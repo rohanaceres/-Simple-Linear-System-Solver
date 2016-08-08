@@ -13,10 +13,21 @@ namespace Geronimus.Core.Test
         {
             LinearSystemResult result = new JacobiMethodBuilder()
                 .Method
-                .AddEquation(new LinearEquation())
-                .AddEquation(new LinearEquation())
-                .AddEquation(new LinearEquation())
-                .AddErrorRate(0.0001m)
+                .AddEquation(new LinearEquation(70,  1,  0, 363))
+                .AddEquation(new LinearEquation(60, -1,  1, 518))
+                .AddEquation(new LinearEquation(40,  0, -1, 307))
+                .AddErrorRate(0.0001)
+                .SolveIt();
+        }
+        [TestMethod]
+        public void MyTestMethod2()
+        {
+            LinearSystemResult result = new JacobiMethodBuilder()
+                .Method
+                .AddEquation(new LinearEquation(10, 2, -1, 7))
+                .AddEquation(new LinearEquation(1, 8, 3, -4))
+                .AddEquation(new LinearEquation(-2, -1, 10, 9))
+                .AddErrorRate(0.0001)
                 .SolveIt();
         }
     }

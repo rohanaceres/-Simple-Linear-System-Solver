@@ -5,6 +5,8 @@ namespace Geronimus.Core.Model
 {
     public class LinearSystem
     {
+        public const short LimitVariableNumber = 3;
+
         public List<LinearEquation> Equations { get; private set; }
 
         public LinearSystem()
