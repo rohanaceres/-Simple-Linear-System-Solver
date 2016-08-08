@@ -5,8 +5,15 @@ using System.Diagnostics;
 
 namespace Geronimus.Core.Methods
 {
+    /// <summary>
+    /// Jacobi method to solve systems of linear equations.
+    /// </summary>
     public class JacobiMethod : AbstractMethod
     {
+        /// <summary>
+        /// Solve the <see cref="System"/>.
+        /// </summary>
+        /// <returns><see cref="System"/> result.</returns>
         public override LinearSystemResult SolveIt()
         {
             LinearSystemResult result = new LinearSystemResult();
@@ -45,6 +52,10 @@ namespace Geronimus.Core.Methods
             return result;
         }
 
+        /// <summary>
+        /// Verify if the algorithm should stop or continue iterating.
+        /// </summary>
+        /// <returns>If the algorithm should stop or continue iterating.</returns>
         private bool ShouldIStayOrShouldIGo(double x0, double x, double y0, double y, double z0, double z)
         {
             return (x0 - x).InvertIfNegative() > this.ErrorRate 

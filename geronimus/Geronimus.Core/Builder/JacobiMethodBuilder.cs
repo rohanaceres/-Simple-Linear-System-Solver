@@ -2,11 +2,8 @@
 
 namespace Geronimus.Core.Builder
 {
-    public class JacobiMethodBuilder : AbstractMethodBuilder<JacobiMethod>
-    {
-        public JacobiMethodBuilder()
-        {
-            this.Method = new JacobiMethod();
-        }
-    }
+    /// <summary>
+    /// Builder of <see cref="JacobiMethod"/>.
+    /// </summary>
+    public class JacobiMethodBuilder : AbstractMethodBuilder<JacobiMethod> { }
 }
