@@ -14,7 +14,7 @@ namespace Geronimus.Core.Methods
         /// Solve the <see cref="System"/>.
         /// </summary>
         /// <returns><see cref="System"/> result.</returns>
-        public override LinearSystemResult SolveIt()
+        protected override LinearSystemResult SolveItByConcrete()
         {
             LinearSystemResult result = new LinearSystemResult();
 

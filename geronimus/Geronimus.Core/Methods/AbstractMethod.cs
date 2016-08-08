@@ -1,4 +1,5 @@
 ﻿using Geronimus.Core.Model;
+using System;
 
 namespace Geronimus.Core.Methods
 {
@@ -25,10 +26,20 @@ namespace Geronimus.Core.Methods
         }
 
         /// <summary>
-        /// Solve the <see cref="System"/>.
+        /// Solve the <see cref="System"/> and validate data before.
         /// </summary>
         /// <returns><see cref="System"/> result.</returns>
-        public abstract LinearSystemResult SolveIt();
+        /// <exception cref="InvalidOperationException">If a system with an invalid number of equations is input.</exception>
+        public LinearSystemResult SolveIt()
+        {
+            this.Validate();
+            return this.SolveItByConcrete();
+        }
+        /// <summary>
+        /// Solve the <see cref="System"/> by concrete class.
+        /// </summary>
+        /// <returns><see cref="System"/> result.</returns>
+        protected abstract LinearSystemResult SolveItByConcrete();
         /// <summary>
         /// Add an equation to the <see cref="System"/>.
         /// </summary>
@@ -48,6 +59,14 @@ namespace Geronimus.Core.Methods
         {
             this.ErrorRate = errorRate;
             return this;
+        }
+
+        private void Validate()
+        {
+            if (this.System.Equations.Count != LinearSystem.LimitVariableNumber)
+            {
+                throw new InvalidOperationException("Invalid number of equations. Only systems with 3 equations are supported.");
+            }
         }
     }
 }
