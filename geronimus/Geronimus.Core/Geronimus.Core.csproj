@@ -46,7 +46,6 @@
     <Compile Include="Methods\AbstractMethod.cs" />
     <Compile Include="Model\LinearEquation.cs" />
     <Compile Include="Model\LinearSystem.cs" />
-    <Compile Include="Model\LinearSystemCode.cs" />
     <Compile Include="Model\LinearSystemResult.cs" />
     <Compile Include="Methods\JacobiMethod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

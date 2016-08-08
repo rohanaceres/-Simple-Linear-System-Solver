@@ -6,10 +6,10 @@ using Geronimus.Core.Builder;
 namespace Geronimus.Core.Test
 {
     [TestClass]
-    public class UnitTest1
+    public class UsageTest
     {
-        [TestMethod]
-        public void TestMethod1()
+        //[TestMethod]
+        public void Jacobi1()
         {
             LinearSystemResult result = new JacobiMethodBuilder()
                 .Method
@@ -19,8 +19,8 @@ namespace Geronimus.Core.Test
                 .AddErrorRate(0.0001)
                 .SolveIt();
         }
-        [TestMethod]
-        public void MyTestMethod2()
+        //[TestMethod]
+        public void Jacobi2()
         {
             LinearSystemResult result = new JacobiMethodBuilder()
                 .Method

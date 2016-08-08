@@ -27,7 +27,7 @@ namespace Geronimus.Core.Methods
         /// <summary>
         /// Solve the <see cref="System"/>.
         /// </summary>
-        /// <returns>System result.</returns>
+        /// <returns><see cref="System"/> result.</returns>
         public abstract LinearSystemResult SolveIt();
         /// <summary>
         /// Add an equation to the <see cref="System"/>.
