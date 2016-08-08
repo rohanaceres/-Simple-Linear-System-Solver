@@ -14,6 +14,7 @@ namespace Geronimus.Core.Methods
         /// Solve the <see cref="System"/>.
         /// </summary>
         /// <returns><see cref="System"/> result.</returns>
+        /// <exception cref="DivideByZeroException">If a division by zero occurred.</exception>
         protected override LinearSystemResult SolveItByConcrete()
         {
             LinearSystemResult result = new LinearSystemResult();

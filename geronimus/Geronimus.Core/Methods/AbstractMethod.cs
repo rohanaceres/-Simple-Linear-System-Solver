@@ -30,6 +30,7 @@ namespace Geronimus.Core.Methods
         /// </summary>
         /// <returns><see cref="System"/> result.</returns>
         /// <exception cref="InvalidOperationException">If a system with an invalid number of equations is input.</exception>
+        /// <exception cref="DivideByZeroException">If a division by zero occurred.</exception>
         public LinearSystemResult SolveIt()
         {
             this.Validate();
@@ -39,6 +40,7 @@ namespace Geronimus.Core.Methods
         /// Solve the <see cref="System"/> by concrete class.
         /// </summary>
         /// <returns><see cref="System"/> result.</returns>
+        /// <exception cref="DivideByZeroException">If a division by zero occurred.</exception>
         protected abstract LinearSystemResult SolveItByConcrete();
         /// <summary>
         /// Add an equation to the <see cref="System"/>.
