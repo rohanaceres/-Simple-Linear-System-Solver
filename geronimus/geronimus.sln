@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geronimus.Core", "Geronimus.Core\Geronimus.Core.csproj", "{B00B0317-0FEC-4DE6-8D23-0CC45B98F4AD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geronimus.Core.Test", "Geronimus.Core.Test\Geronimus.Core.Test.csproj", "{C4C676C5-20B2-4665-80B6-D6D956D441BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B00B0317-0FEC-4DE6-8D23-0CC45B98F4AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B00B0317-0FEC-4DE6-8D23-0CC45B98F4AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B00B0317-0FEC-4DE6-8D23-0CC45B98F4AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4C676C5-20B2-4665-80B6-D6D956D441BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4C676C5-20B2-4665-80B6-D6D956D441BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4C676C5-20B2-4665-80B6-D6D956D441BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4C676C5-20B2-4665-80B6-D6D956D441BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

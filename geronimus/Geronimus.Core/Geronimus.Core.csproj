@@ -40,9 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LinearEquation.cs" />
-    <Compile Include="LinearSystem.cs" />
-    <Compile Include="LinearSystemResult.cs" />
+    <Compile Include="Model\LinearEquation.cs" />
+    <Compile Include="Model\LinearSystem.cs" />
+    <Compile Include="LinearSystemMethodFactory.cs" />
+    <Compile Include="Model\LinearSystemCode.cs" />
+    <Compile Include="Model\LinearSystemResult.cs" />
     <Compile Include="Methods\ILinearSystemMethod.cs" />
     <Compile Include="Methods\JacobiMethod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

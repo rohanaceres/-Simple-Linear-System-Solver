@@ -2,7 +2,7 @@
 
 namespace Geronimus.Core.Methods
 {
-    public class JacobiMethod : ILinearSystemMethod
+    internal class JacobiMethod : ILinearSystemMethod
     {
         public LinearSystemResult SolveIt(LinearSystem linearSystem)
         {
