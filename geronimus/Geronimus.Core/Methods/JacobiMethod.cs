@@ -22,7 +22,9 @@ namespace Geronimus.Core.Methods
             double x = 0, y = 0, z = 0;
             double x0 = 0, y0 = 0, z0 = 0;
 
-            while (ShouldIStayOrShouldIGo(x0, x, y0, y, z0, z))
+            bool firstIteration = true;
+
+            while (ShouldIStayOrShouldIGo(x0, x, y0, y, z0, z) || firstIteration)
             {
                 x0 = x;
                 y0 = y;
@@ -42,6 +44,8 @@ namespace Geronimus.Core.Methods
                      + this.System.Equations[2].Y.Invert() * y0
                      + this.System.Equations[2].ConstantResult)
                      / this.System.Equations[2].Z;
+
+                firstIteration = false;
 
                 Debug.WriteLine("Iteration: {0}, {1}, {2}", x, y, z);
             };

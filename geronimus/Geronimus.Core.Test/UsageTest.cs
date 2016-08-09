@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Geronimus.Core.Model;
 using Geronimus.Core.Builder;
+using System.Diagnostics;
 
 namespace Geronimus.Core.Test
 {
@@ -27,8 +28,10 @@ namespace Geronimus.Core.Test
                 .AddEquation(new LinearEquation(10, 2, -1, 7))
                 .AddEquation(new LinearEquation(1, 8, 3, -4))
                 .AddEquation(new LinearEquation(-2, -1, 10, 9))
-                .AddErrorRate(0.0001)
+                .AddErrorRate(0.000000000001)
                 .SolveIt();
+
+            Debug.WriteLine(result.X + " " + result.Y + " " + result.Z);
         }
     }
 }
