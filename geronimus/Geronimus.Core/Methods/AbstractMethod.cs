@@ -16,6 +16,7 @@ namespace Geronimus.Core.Methods
         /// Error rate to determine when the algorithm should stop iterate.
         /// </summary>
         public double ErrorRate { get; protected set; }
+        public Nullable<int> DecimalPlacesToRound { get; protected set; }
         
         /// <summary>
         /// Create an instance of <see cref="System"/>.
@@ -34,7 +35,17 @@ namespace Geronimus.Core.Methods
         public LinearSystemResult SolveIt()
         {
             this.Validate();
-            return this.SolveItByConcrete();
+            LinearSystemResult result = this.SolveItByConcrete();
+
+            if (this.DecimalPlacesToRound.HasValue == true)
+            {
+                result.X = Math.Round(result.X, this.DecimalPlacesToRound.Value);
+                result.Y = Math.Round(result.Y, this.DecimalPlacesToRound.Value);
+                result.Z = Math.Round(result.Z, this.DecimalPlacesToRound.Value);
+                result.IsRounded = true;
+            }
+
+            return result;
         }
         /// <summary>
         /// Solve the <see cref="System"/> by concrete class.
@@ -60,6 +71,16 @@ namespace Geronimus.Core.Methods
         public virtual AbstractMethod AddErrorRate(double errorRate)
         {
             this.ErrorRate = errorRate;
+            return this;
+        }
+        /// <summary>
+        /// Add decimal praces to round the result.
+        /// </summary>
+        /// <param name="decimalPlacesToRound">Number of decimal places.</param>
+        /// <returns>Itself.</returns>
+        public virtual AbstractMethod IsRound(int decimalPlacesToRound)
+        {
+            this.DecimalPlacesToRound = decimalPlacesToRound;
             return this;
         }
 

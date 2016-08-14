@@ -26,6 +26,7 @@ namespace Geronimus.Core.Test
                 .AddEquation(new LinearEquation(1, 8, 3, -4))
                 .AddEquation(new LinearEquation(-2, -1, 10, 9))
                 .AddErrorRate(0.000000000001)
+                .IsRound(10)
                 .SolveIt();
 
             Debug.WriteLine(result.X + " " + result.Y + " " + result.Z);

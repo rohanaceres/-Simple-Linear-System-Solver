@@ -40,8 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Builder\AbstractMethodBuilder.cs" />
-    <Compile Include="Builder\JacobiMethodBuilder.cs" />
     <Compile Include="Extensions\DoubleExtensions.cs" />
     <Compile Include="Methods\AbstractMethod.cs" />
     <Compile Include="Model\LinearEquation.cs" />

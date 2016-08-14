@@ -19,5 +19,13 @@ namespace Geronimus.Core.Model
         /// Variable Z value.
         /// </summary>
         public double Z { get; set; }
+        /// <summary>
+        /// Number of iterations needed to find the result.
+        /// </summary>
+        public int Iterations { get; set; }
+        /// <summary>
+        /// Whether the result was rounded or not.
+        /// </summary>
+        public bool IsRounded { get; set; }
     }
 }
