@@ -48,7 +48,7 @@ namespace Geronimus.Core.Methods
 
                 Debug.WriteLine("Iteration: {0}, {1}, {2}", x, y, z);
             }
-            while (ShouldIStayOrShouldIGo(x0, x, y0, y, z0, z));
+            while (ShouldIStayOrShouldIGo(x0, x, y0, y, z0, z) == true);
 
             result.X = x;
             result.Y = y;
@@ -61,6 +61,7 @@ namespace Geronimus.Core.Methods
 
         /// <summary>
         /// Verify if the algorithm should stop or continue iterating.
+        /// Return true if should stay.
         /// </summary>
         /// <returns>If the algorithm should stop or continue iterating.</returns>
         private bool ShouldIStayOrShouldIGo(double x0, double x, double y0, double y, double z0, double z)
