@@ -13,11 +13,9 @@ namespace Geronimus.Core.Methods
     { 
         protected override LinearSystemResult SolveItByConcrete()
         {
-            double[,] matrix = this.System.ToMatrix();
+            this.ForwardElimination();
 
-            this.ForwardElimination(matrix);
-
-            double[] rawResult = this.BackSubstitution(matrix);
+            double[] rawResult = this.BackSubstitution();
 
             LinearSystemResult result = new LinearSystemResult(rawResult);
             result.Iterations = this.Dimension.Value;
@@ -28,17 +26,17 @@ namespace Geronimus.Core.Methods
         /// Operations of getting the row pivot and Gauss Elimination.
         /// </summary>
         /// <param name="matrix">Matrix correspondant to the linear equation system.</param>
-        protected virtual void ForwardElimination(double [,] matrix)
+        protected virtual void ForwardElimination()
         {
-            this.GetPivot(matrix);
-            this.GaussElimination(matrix);
+            this.GetPivot();
+            this.GaussElimination();
         }
         /// <summary>
         /// Solve the system using the row-echelon matrix.
         /// </summary>
         /// <param name="matrix">Row-echelon matrix.</param>
         /// <returns>Variables values.</returns>
-        protected virtual double [] BackSubstitution(double [,] matrix)
+        protected virtual double [] BackSubstitution()
         {
             double[] result = new double[this.Dimension.Value];
 
@@ -48,7 +46,7 @@ namespace Geronimus.Core.Methods
                 // Atribui o valor inicial do resultado igual à 
                 // constante da equação atual:
                 // Exemplo: result[i] = 22
-                result[i] = matrix[i, this.Dimension.Value];
+                result[i] = this.System.Equations[i].Variables[this.Dimension.Value];
 
                 for (int j = 0; j < this.Dimension.Value; j++)
                 {
@@ -56,14 +54,14 @@ namespace Geronimus.Core.Methods
                     // Exemplo: 2x = -3y -4z + 22
                     if (j != i)
                     {
-                        result[i] -= matrix[i, j] * result[j];
+                        result[i] -= this.System.Equations[i].Variables[j] * result[j];
                     }
                 }
                 
                 // Divide o resultado das contas pelo coeficiente
                 // da variável que está sendo calculada:
                 // Exemplo: x = (-3y -4z + 22)/2
-                result[i] /= matrix[i, i];
+                result[i] /= this.System.Equations[i].Variables[i];
             }
 
             return result;
@@ -74,7 +72,7 @@ namespace Geronimus.Core.Methods
         /// Reorder the matrix if necessary.
         /// </summary>
         /// <param name="matrix">Matrix containing a system with linear equations.</param>
-        private void GetPivot(double[,] matrix)
+        private void GetPivot()
         {
             // Para cada linha, faça:
             for (int currentRow = 0; currentRow < this.Dimension; currentRow++)
@@ -84,9 +82,9 @@ namespace Geronimus.Core.Methods
                 {
                     // Se o elemento da diagonal for menor que o elemento 
                     // da linha de baixo, troca as linhas de posição (Swap):
-                    if (matrix[currentRow, currentRow] < matrix[nextRow, currentRow])
+                    if (this.System.Equations[currentRow].Variables[currentRow] < this.System.Equations[nextRow].Variables[currentRow])
                     {
-                        this.Swap(matrix, currentRow, nextRow);
+                        this.Swap(currentRow, nextRow);
                     }
                 }
             }
@@ -103,7 +101,7 @@ namespace Geronimus.Core.Methods
         /// |0 1 0|
         /// |0 0 1|
         /// </example>
-        private void GaussElimination(double[,] matrix)
+        private void GaussElimination()
         {
             // Para cada linha:
             for (int currentRow = 0; currentRow < this.Dimension - 1; currentRow++)
@@ -111,12 +109,13 @@ namespace Geronimus.Core.Methods
                 // Para cada linha após a currentRow:
                 for (int nextRow = currentRow + 1; nextRow < this.Dimension; nextRow++)
                 {
-                    double t = matrix[nextRow, currentRow] / matrix[currentRow, currentRow];
+                    double t = this.System.Equations[nextRow].Variables[currentRow] 
+                                / this.System.Equations[currentRow].Variables[currentRow];
 
                     for (int j = 0; j <= this.Dimension; j++)
                     {
                         // Zera os elementos abaixo do pivot:
-                        matrix[nextRow, j] -= t * matrix[currentRow, j];
+                        this.System.Equations[nextRow].Variables[j] -= t * this.System.Equations[currentRow].Variables[j];
                     }
                 }
             }
@@ -124,16 +123,15 @@ namespace Geronimus.Core.Methods
         /// <summary>
         /// Swap two rows of a matrix.
         /// </summary>
-        /// <param name="matrix">Matrix to swap rows.</param>
         /// <param name="firstRow">First row to swap.</param>
         /// <param name="secontRow">Second row to swap.</param>
-        private void Swap(double [,] matrix, int firstRow, int secontRow)
+        private void Swap(int firstRow, int secontRow)
         {
             for (int i = 0; i <= this.Dimension; i++)
             {
-                double temp = matrix[firstRow, i];
-                matrix[firstRow, i] = matrix[secontRow, i];
-                matrix[secontRow, i] = temp;
+                double temp = this.System.Equations[firstRow].Variables[i];
+                this.System.Equations[firstRow].Variables[i] = this.System.Equations[secontRow].Variables[i];
+                this.System.Equations[secontRow].Variables[i] = temp;
             }
         }
 
