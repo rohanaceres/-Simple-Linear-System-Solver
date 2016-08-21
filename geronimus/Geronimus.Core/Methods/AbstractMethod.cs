@@ -16,6 +16,10 @@ namespace Geronimus.Core.Methods
         /// Error rate to determine when the algorithm should stop iterate.
         /// </summary>
         public double ErrorRate { get; protected set; }
+        /// <summary>
+        /// Number of decimal places the result should have.
+        /// If null, the most accurate value will be returned.
+        /// </summary>
         public Nullable<int> DecimalPlacesToRound { get; protected set; }
         
         /// <summary>
