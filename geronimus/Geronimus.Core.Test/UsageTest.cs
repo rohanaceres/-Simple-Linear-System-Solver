@@ -107,5 +107,16 @@ namespace Geronimus.Core.Test
             Assert.AreEqual(resultgs.Y, 34.4118);
             Assert.AreEqual(resultgs.Z, 36.7647);
         }
+        [TestMethod]
+        public void GaussElimination_test()
+        {
+            LinearSystemResult result = new GaussJordanMethod()
+                .AddEquation(new LinearEquation(70, 1, 0, 636))
+                .AddEquation(new LinearEquation(60, -1, 1, 518))
+                .AddEquation(new LinearEquation(40, 0, -1, 307))
+                .SolveIt();
+
+            Debug.WriteLine("Gauss-Jordan: {" + result.X + ", " + result.Y + ", " + result.Z + "} Total de iterações: " + result.Iterations);
+        }
     }
 }
