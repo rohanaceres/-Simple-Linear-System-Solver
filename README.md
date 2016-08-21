@@ -61,7 +61,7 @@ LinearSystemResult result = new GaussSeidelMethod()
 Console.WriteLine(result.ToString());
 ```
 
-### Gouss-Jordan
+### Gauss-Jordan
 
 ```csharp
 LinearSystemResult result = new GaussJordanMethod()
