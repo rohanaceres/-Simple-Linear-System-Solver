@@ -27,20 +27,20 @@ namespace Geronimus.Core.Methods
                 y0 = y;
                 z0 = z;
 
-                x = (this.System.Equations[0].Y.Invert() * y0
-                     + this.System.Equations[0].Z.Invert() * z0
-                     + this.System.Equations[0].ConstantResult)
-                    / this.System.Equations[0].X;
+                x = (this.System.Equations[0].Variables[1].Invert() * y0
+                     + this.System.Equations[0].Variables[2].Invert() * z0
+                     + this.System.Equations[0].Variables[3])
+                    / this.System.Equations[0].Variables[0];
 
-                y = (this.System.Equations[1].X.Invert() * x0
-                     + this.System.Equations[1].Z.Invert() * z0
-                     + this.System.Equations[1].ConstantResult)
-                    / this.System.Equations[1].Y;
+                y = (this.System.Equations[1].Variables[0].Invert() * x0
+                     + this.System.Equations[1].Variables[2].Invert() * z0
+                     + this.System.Equations[1].Variables[3])
+                    / this.System.Equations[1].Variables[1];
 
-                z = (this.System.Equations[2].X.Invert() * x0
-                     + this.System.Equations[2].Y.Invert() * y0
-                     + this.System.Equations[2].ConstantResult)
-                     / this.System.Equations[2].Z;
+                z = (this.System.Equations[2].Variables[0].Invert() * x0
+                     + this.System.Equations[2].Variables[1].Invert() * y0
+                     + this.System.Equations[2].Variables[3])
+                     / this.System.Equations[2].Variables[2];
 
                 iterations++;
 

@@ -1,5 +1,6 @@
 ﻿using Geronimus.Core.Model;
 using System;
+using System.Collections.Generic;
 
 namespace Geronimus.Core.Methods
 {
@@ -21,8 +22,11 @@ namespace Geronimus.Core.Methods
         /// If null, the most accurate value will be returned.
         /// </summary>
         public Nullable<int> DecimalPlacesToRound { get; protected set; }
-        public int Dimension { get { return this.System.Equations.Count; } }
-        
+        /// <summary>
+        /// System dimension.
+        /// </summary>
+        public Nullable<int> Dimension { get; protected set; }
+
         /// <summary>
         /// Create an instance of <see cref="System"/>.
         /// </summary>
@@ -39,7 +43,6 @@ namespace Geronimus.Core.Methods
         /// <exception cref="DivideByZeroException">If a division by zero occurred.</exception>
         public LinearSystemResult SolveIt()
         {
-            this.Validate();
             LinearSystemResult result = this.SolveItByConcrete();
 
             if (this.DecimalPlacesToRound.HasValue == true)
@@ -53,18 +56,13 @@ namespace Geronimus.Core.Methods
             return result;
         }
         /// <summary>
-        /// Solve the <see cref="System"/> by concrete class.
-        /// </summary>
-        /// <returns><see cref="System"/> result.</returns>
-        /// <exception cref="DivideByZeroException">If a division by zero occurred.</exception>
-        protected abstract LinearSystemResult SolveItByConcrete();
-        /// <summary>
         /// Add an equation to the <see cref="System"/>.
         /// </summary>
         /// <param name="equation">New equation.</param>
         /// <returns>Itself.</returns>
-        public virtual AbstractMethod AddEquation (LinearEquation equation)
+        public virtual AbstractMethod AddEquation(LinearEquation equation)
         {
+            this.ValidateEquation(equation);
             this.System.Equations.Add(equation);
             return this;
         }
@@ -88,12 +86,37 @@ namespace Geronimus.Core.Methods
             this.DecimalPlacesToRound = decimalPlacesToRound;
             return this;
         }
-
-        private void Validate()
+        /// <summary>
+        /// Set system dimension.
+        /// </summary>
+        /// <param name="dimension">System dimension.</param>
+        /// <returns>Itself.</returns>
+        public virtual AbstractMethod AddDimension(int dimension)
         {
-            if (this.System.Equations.Count != LinearSystem.LimitVariableNumber)
+            this.Dimension = dimension;
+            return this;
+        }
+
+        /// <summary>
+        /// Solve the <see cref="System"/> by concrete class.
+        /// </summary>
+        /// <returns><see cref="System"/> result.</returns>
+        /// <exception cref="DivideByZeroException">If a division by zero occurred.</exception>
+        protected abstract LinearSystemResult SolveItByConcrete();
+
+        /// <summary>
+        /// Validate equations to ensure the integrity of the linear system.
+        /// </summary>
+        /// <param name="equation">Equation to be validated.</param>
+        private void ValidateEquation(LinearEquation equation)
+        {
+            if (this.Dimension.HasValue == false)
             {
-                throw new InvalidOperationException("Invalid number of equations. Only systems with 3 equations are supported.");
+                throw new InvalidOperationException("Set dimension first.");
+            }
+            if (equation.Variables.Count != this.Dimension + 1)
+            {
+                throw new ArgumentException("Your system dimension is " + this.Dimension.Value + ", hence your equation must have " + (this.Dimension + 1) + " numbers.");
             }
         }
     }

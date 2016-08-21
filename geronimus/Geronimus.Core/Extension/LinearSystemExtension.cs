@@ -9,34 +9,16 @@ namespace Geronimus.Core.Extensions
             double[,] matrix = new double[3, 4];
 
             if (system == null || system.Equations == null) { return null; }
-
-            int i = 0;
-
-            foreach (LinearEquation currentEquation in system.Equations)
+            
+            for (int i = 0; i < system.Dimension; i++)
             {
-                matrix[i, 0] = currentEquation.X;
-                matrix[i, 1] = currentEquation.Y;
-                matrix[i, 2] = currentEquation.Z;
-                matrix[i, 3] = currentEquation.ConstantResult;
-
-                i++;
+                for (int j = 0; j < system.Dimension + 1; j++)
+                {
+                    matrix[i, j] = system.Equations[i].Variables[j];
+                }
             }
-
+            
             return matrix;
-        }
-        public static LinearSystem ToLinearSystem(this double [,] matrix, int rows)
-        {
-            LinearSystem system = new LinearSystem();
-
-            for (int i = 0; i < rows; i++)
-            {
-                system.Equations[i].X = matrix[i, 0];
-                system.Equations[i].Y = matrix[i, 1];
-                system.Equations[i].Z = matrix[i, 2];
-                system.Equations[i].ConstantResult = matrix[i, 3];
-            }
-
-            return system;
         }
     }
 }

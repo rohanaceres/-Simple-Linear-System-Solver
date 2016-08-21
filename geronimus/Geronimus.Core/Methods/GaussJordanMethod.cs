@@ -24,7 +24,7 @@ namespace Geronimus.Core.Methods
                 X = rawResult[0],
                 Y = rawResult[1],
                 Z = rawResult[2],
-                Iterations = this.Dimension
+                Iterations = this.Dimension.Value
             };
         }
         /// <summary>
@@ -43,15 +43,15 @@ namespace Geronimus.Core.Methods
         /// <returns>Variables values.</returns>
         protected virtual double [] BackSubstitution(double [,] matrix)
         {
-            double[] result = new double[this.Dimension];
+            double[] result = new double[this.Dimension.Value];
 
             // Equação de exemplo: 2x + 3y +4z = 22;
-            for (int i = this.Dimension - 1; i >= 0; i--)                
+            for (int i = this.Dimension.Value - 1; i >= 0; i--)                
             {
                 // Atribui o valor inicial do resultado igual à 
                 // constante da equação atual:
                 // Exemplo: result[i] = 22
-                result[i] = matrix[i, this.Dimension];
+                result[i] = matrix[i, this.Dimension.Value];
 
                 for (int j = 0; j < this.Dimension; j++)
                 {

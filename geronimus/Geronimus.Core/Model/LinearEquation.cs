@@ -1,4 +1,7 @@
-﻿namespace Geronimus.Core.Model
+﻿using System.Collections;
+using System.Collections.Generic;
+
+namespace Geronimus.Core.Model
 {
     /// <summary>
     /// A linear equation with 3 variables.
@@ -6,36 +9,15 @@
     /// <example>2x + 3y + 4z = 5</example>
     public class LinearEquation
     {
-        /// <summary>
-        /// Variable X.
-        /// </summary>
-        public double X { get; set; }
-        /// <summary>
-        /// Variable Y.
-        /// </summary>
-        public double Y { get; set; }
-        /// <summary>
-        /// Variable Z.
-        /// </summary>
-        public double Z { get; set; }
-        /// <summary>
-        /// Equation constant result.
-        /// </summary>
-        public double ConstantResult { get; set; }
+        public List<double> Variables { get; private set; }
 
         /// <summary>
         /// Creates an instance with all variables.
         /// </summary>
-        /// <param name="x">Variable X.</param>
-        /// <param name="y">Variable Y.</param>
-        /// <param name="z">Variable Z.</param>
-        /// <param name="result">Equation constant result.</param>
-        public LinearEquation(double x, double y, double z, double result)
+        /// <param name="vars">Equation variables coefficient.</param>
+        public LinearEquation(params double [] vars)
         {
-            this.X = x;
-            this.Y = y;
-            this.Z = z;
-            this.ConstantResult = result;
+            this.Variables = new List<double>(vars);
         }
     }
 }

@@ -18,20 +18,20 @@ namespace Geronimus.Core.Methods
                 tmpY = result.Y;
                 tmpZ = result.Z;
 
-                result.X = (this.System.Equations[0].Y.Invert() * tmpY
-                     + this.System.Equations[0].Z.Invert() * tmpZ
-                     + this.System.Equations[0].ConstantResult)
-                    / this.System.Equations[0].X;
+                result.X = (this.System.Equations[0].Variables[1].Invert() * tmpY
+                     + this.System.Equations[0].Variables[2].Invert() * tmpZ
+                     + this.System.Equations[0].Variables[3])
+                    / this.System.Equations[0].Variables[0];
 
-                result.Y = (this.System.Equations[1].X.Invert() * result.X
-                     + this.System.Equations[1].Z.Invert() * result.Z
-                     + this.System.Equations[1].ConstantResult)
-                    / this.System.Equations[1].Y;
+                result.Y = (this.System.Equations[1].Variables[0].Invert() * result.X
+                     + this.System.Equations[1].Variables[2].Invert() * result.Z
+                     + this.System.Equations[1].Variables[3])
+                    / this.System.Equations[1].Variables[1];
 
-                result.Z = (this.System.Equations[2].X.Invert() * result.X
-                     + this.System.Equations[2].Y.Invert() * result.Y
-                     + this.System.Equations[2].ConstantResult)
-                     / this.System.Equations[2].Z;
+                result.Z = (this.System.Equations[2].Variables[0].Invert() * result.X
+                     + this.System.Equations[2].Variables[1].Invert() * result.Y
+                     + this.System.Equations[2].Variables[3])
+                     / this.System.Equations[2].Variables[2];
 
                 result.Iterations++;
 

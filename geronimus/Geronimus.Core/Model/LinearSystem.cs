@@ -8,21 +8,20 @@ namespace Geronimus.Core.Model
     public class LinearSystem
     {
         /// <summary>
-        /// Limit of equations in the system.
-        /// </summary>
-        public const short LimitVariableNumber = 3;
-
-        /// <summary>
         /// List of equations in the system.
         /// </summary>
         public List<LinearEquation> Equations { get; private set; }
+        /// <summary>
+        /// Number of equations in the system.
+        /// </summary>
+        public int Dimension { get { return this.Equations.Count; } }
 
         /// <summary>
         /// Creates a system with 3 equations.
         /// </summary>
         public LinearSystem()
         {
-            this.Equations = new List<LinearEquation>(LimitVariableNumber);
+            this.Equations = new List<LinearEquation>();
         }
     }
 }

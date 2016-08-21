@@ -12,6 +12,7 @@ namespace Geronimus.Core.Test
         public void Jacobi_parachute_problem()
         {
             LinearSystemResult result = new JacobiMethod()
+                .AddDimension(3)
                 .AddEquation(new LinearEquation(70, 1, 0, 636))
                 .AddEquation(new LinearEquation(60, -1, 1, 518))
                 .AddEquation(new LinearEquation(40, 0, -1, 307))
@@ -24,6 +25,7 @@ namespace Geronimus.Core.Test
         public void Jacobi_test()
         {
             LinearSystemResult result = new JacobiMethod()
+                .AddDimension(3)
                 .AddEquation(new LinearEquation(10, 2, -1, 7))
                 .AddEquation(new LinearEquation(1, 8, 3, -4))
                 .AddEquation(new LinearEquation(-2, -1, 10, 9))
@@ -41,6 +43,7 @@ namespace Geronimus.Core.Test
         public void Jacobi_vs_GaussSiedel()
         {
             LinearSystemResult resultj = new JacobiMethod()
+                .AddDimension(3)
                .AddEquation(new LinearEquation(5, -1, 2, 12))
                .AddEquation(new LinearEquation(3, 8, -2, -25))
                .AddEquation(new LinearEquation(1, 1, 4, 6))
@@ -53,6 +56,7 @@ namespace Geronimus.Core.Test
             Assert.AreEqual(resultj.Z, 2);
 
             LinearSystemResult resultgs = new GaussSeidelMethod()
+                .AddDimension(3)
                 .AddEquation(new LinearEquation(5, -1, 2, 12))
                 .AddEquation(new LinearEquation(3, 8, -2, -25))
                 .AddEquation(new LinearEquation(1, 1, 4, 6))
@@ -72,6 +76,7 @@ namespace Geronimus.Core.Test
         public void Jacobi_vs_GaussSiedel_parachute_problem()
         {
             LinearSystemResult resultj = new JacobiMethod()
+                .AddDimension(3)
                 .AddEquation(new LinearEquation(70, 1, 0, 636))
                 .AddEquation(new LinearEquation(60, -1, 1, 518))
                 .AddEquation(new LinearEquation(40, 0, -1, 307))
@@ -80,6 +85,7 @@ namespace Geronimus.Core.Test
                 .SolveIt();
 
             LinearSystemResult resultgs = new GaussSeidelMethod()
+                .AddDimension(3)
                 .AddEquation(new LinearEquation(70, 1, 0, 636))
                 .AddEquation(new LinearEquation(60, -1, 1, 518))
                 .AddEquation(new LinearEquation(40, 0, -1, 307))
@@ -94,6 +100,7 @@ namespace Geronimus.Core.Test
         public void GaussSiedel_parachute_problem()
         {
             LinearSystemResult resultgs = new GaussSeidelMethod()
+                .AddDimension(3)
                 .AddEquation(new LinearEquation(70, 1, 0, 636))
                 .AddEquation(new LinearEquation(60, -1, 1, 518))
                 .AddEquation(new LinearEquation(40, 0, -1, 307))
@@ -111,6 +118,7 @@ namespace Geronimus.Core.Test
         public void GaussElimination_test()
         {
             LinearSystemResult result = new GaussJordanMethod()
+                .AddDimension(3)
                 .AddEquation(new LinearEquation(70, 1, 0, 636))
                 .AddEquation(new LinearEquation(60, -1, 1, 518))
                 .AddEquation(new LinearEquation(40, 0, -1, 307))

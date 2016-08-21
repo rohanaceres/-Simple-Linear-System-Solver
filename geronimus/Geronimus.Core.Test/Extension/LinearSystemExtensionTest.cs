@@ -1,6 +1,7 @@
 ﻿using Geronimus.Core.Extensions;
 using Geronimus.Core.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Diagnostics;
 
 namespace Geronimus.Core.Test.Extension
@@ -19,15 +20,21 @@ namespace Geronimus.Core.Test.Extension
 
             double[,] matrix = system.ToMatrix();
 
-            int i = 0;
-            foreach (LinearEquation currentEquation in system.Equations)
+            for (int i = 0; i < system.Dimension; i++)
             {
-                Assert.AreEqual(matrix[i, 0], system.Equations[i].X);
-                Assert.AreEqual(matrix[i, 1], system.Equations[i].Y);
-                Assert.AreEqual(matrix[i, 2], system.Equations[i].Z);
-                Assert.AreEqual(matrix[i, 3], system.Equations[i].ConstantResult);
+                for (int j = 0; j < system.Dimension + 1; j++)
+                {
+                    Debug.Write(matrix[i, j] + " ");
+                }
+                Debug.Write(Environment.NewLine);
+            }
 
-                i++;
+            for (int i = 0; i < system.Dimension; i++)
+            {
+                for (int j = 0; j < system.Dimension + 1; j++)
+                {
+                    Assert.AreEqual(matrix[i, j], system.Equations[i].Variables[j]);
+                }
             }
         }
     }
