@@ -69,6 +69,28 @@ namespace Geronimus.Core.Test
             Assert.IsTrue(resultgs.Iterations < resultj.Iterations);
         }
         [TestMethod]
+        public void Jacobi_vs_GaussSiedel_parachute_problem()
+        {
+            LinearSystemResult resultj = new JacobiMethod()
+               .AddEquation(new LinearEquation(70, 1, 0, 636))
+                .AddEquation(new LinearEquation(60, -1, 1, 518))
+                .AddEquation(new LinearEquation(40, 0, -1, 307))
+               .AddErrorRate(0.0000001)
+               .IsRound(10)
+               .SolveIt();
+
+            LinearSystemResult resultgs = new GaussSeidelMethod()
+                .AddEquation(new LinearEquation(70, 1, 0, 636))
+                .AddEquation(new LinearEquation(60, -1, 1, 518))
+                .AddEquation(new LinearEquation(40, 0, -1, 307))
+                .AddErrorRate(0.0000001)
+                .IsRound(10)
+                .SolveIt();
+
+            Debug.WriteLine("Jacobi: \t\t{" + resultj.X + ", " + resultj.Y + ", " + resultj.Z + "} Total de iterações: " + resultj.Iterations);
+            Debug.WriteLine("Gauss-Siedel: \t{" + resultgs.X + ", " + resultgs.Y + ", " + resultgs.Z + "} Total de iterações: " + resultgs.Iterations);
+        }
+        [TestMethod]
         public void GaussSiedel_parachute_problem()
         {
             LinearSystemResult resultgs = new GaussSeidelMethod()

@@ -46,7 +46,7 @@ namespace Geronimus.Core.Methods
 
                 iterations++;
 
-                Debug.WriteLine("Iteration: {0}, {1}, {2}", x, y, z);
+                //Debug.WriteLine("Iteration: {0}, {1}, {2}", x, y, z);
             }
             while (ShouldIStayOrShouldIGo(x0, x, y0, y, z0, z) == true);
 
