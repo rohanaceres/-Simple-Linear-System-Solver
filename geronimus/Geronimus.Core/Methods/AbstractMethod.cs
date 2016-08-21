@@ -21,6 +21,7 @@ namespace Geronimus.Core.Methods
         /// If null, the most accurate value will be returned.
         /// </summary>
         public Nullable<int> DecimalPlacesToRound { get; protected set; }
+        public int Dimension { get { return this.System.Equations.Count; } }
         
         /// <summary>
         /// Create an instance of <see cref="System"/>.

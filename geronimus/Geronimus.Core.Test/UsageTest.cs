@@ -114,6 +114,7 @@ namespace Geronimus.Core.Test
                 .AddEquation(new LinearEquation(70, 1, 0, 636))
                 .AddEquation(new LinearEquation(60, -1, 1, 518))
                 .AddEquation(new LinearEquation(40, 0, -1, 307))
+                .IsRound(4)
                 .SolveIt();
 
             Debug.WriteLine("Gauss-Jordan: {" + result.X + ", " + result.Y + ", " + result.Z + "} Total de iterações: " + result.Iterations);
