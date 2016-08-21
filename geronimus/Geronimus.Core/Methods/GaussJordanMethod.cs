@@ -53,7 +53,7 @@ namespace Geronimus.Core.Methods
                 // Exemplo: result[i] = 22
                 result[i] = matrix[i, this.Dimension.Value];
 
-                for (int j = 0; j < this.Dimension; j++)
+                for (int j = 0; j < this.Dimension.Value; j++)
                 {
                     // Subtrai do valor atual os outros elementos da equação:
                     // Exemplo: 2x = -3y -4z + 22
