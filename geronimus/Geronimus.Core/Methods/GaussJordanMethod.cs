@@ -19,13 +19,10 @@ namespace Geronimus.Core.Methods
 
             double[] rawResult = this.BackSubstitution(matrix);
 
-            return new LinearSystemResult
-            {
-                X = rawResult[0],
-                Y = rawResult[1],
-                Z = rawResult[2],
-                Iterations = this.Dimension.Value
-            };
+            LinearSystemResult result = new LinearSystemResult(rawResult);
+            result.Iterations = this.Dimension.Value;
+
+            return result;
         }
         /// <summary>
         /// Operations of getting the row pivot and Gauss Elimination.

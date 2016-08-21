@@ -15,9 +15,9 @@ namespace Geronimus.Core.Methods
         /// <exception cref="DivideByZeroException">If a division by zero occurred.</exception>
         protected override LinearSystemResult SolveItByConcrete()
         {
-            LinearSystemResult result = new LinearSystemResult();
+            LinearSystemResult result = new LinearSystemResult(this.Dimension.Value);
 
-            double [] r = new double [this.Dimension.Value];
+            double[] r = new double[this.Dimension.Value];
             double [] tmp = new double[this.Dimension.Value];
 
             do
@@ -43,18 +43,17 @@ namespace Geronimus.Core.Methods
             }
             while (ShouldIStay(r, tmp) == true);
 
-            result.X = r[0];
-            result.Y = r[1];
-            result.Z = r[2];
+            result.Values.InsertRange(0, r);
 
             return result;
         }
-        
 
         /// <summary>
         /// Verify if the algorithm should stop or continue iterating.
         /// Return true if should stay.
         /// </summary>
+        /// <param name="a">First array of results to compare.</param>
+        /// <param name="b">Second array of results to compare.</param>
         /// <returns>If the algorithm should stop or continue iterating.</returns>
         private bool ShouldIStay(double [] a, double [] b)
         {

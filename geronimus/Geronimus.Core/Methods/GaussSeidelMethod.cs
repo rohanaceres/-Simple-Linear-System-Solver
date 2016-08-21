@@ -8,37 +8,36 @@ namespace Geronimus.Core.Methods
     {
         protected override LinearSystemResult SolveItByConcrete()
         {
-            LinearSystemResult result = new LinearSystemResult();
+            LinearSystemResult result = new LinearSystemResult(this.Dimension.Value);
 
-            double tmpX = 0, tmpY = 0, tmpZ = 0;
+            double[] r = new double[this.Dimension.Value];
+            double[] tmp = new double[this.Dimension.Value];
 
             do
             {
-                tmpX = result.X;
-                tmpY = result.Y;
-                tmpZ = result.Z;
+                r.CopyTo(tmp, 0);
 
-                result.X = (this.System.Equations[0].Variables[1].Invert() * tmpY
-                     + this.System.Equations[0].Variables[2].Invert() * tmpZ
-                     + this.System.Equations[0].Variables[3])
-                    / this.System.Equations[0].Variables[0];
+                for (int i = this.Dimension.Value - 1; i >= 0; i--)
+                {
+                    r[i] = this.System.Equations[i].Variables[this.Dimension.Value];
 
-                result.Y = (this.System.Equations[1].Variables[0].Invert() * result.X
-                     + this.System.Equations[1].Variables[2].Invert() * result.Z
-                     + this.System.Equations[1].Variables[3])
-                    / this.System.Equations[1].Variables[1];
+                    for (int j = 0; j < this.Dimension.Value; j++)
+                    {
+                        if (j != i)
+                        {
+                            r[i] -= this.System.Equations[i].Variables[j] * r[j];
+                        }
+                    }
 
-                result.Z = (this.System.Equations[2].Variables[0].Invert() * result.X
-                     + this.System.Equations[2].Variables[1].Invert() * result.Y
-                     + this.System.Equations[2].Variables[3])
-                     / this.System.Equations[2].Variables[2];
+                    r[i] /= this.System.Equations[i].Variables[i];
+                }
 
                 result.Iterations++;
-
-                //Debug.WriteLine("Iteration: {0}, {1}, {2}", result.X, result.Y, result.Z);
             }
-            while (ShouldIStayOrShouldIGo(result, tmpX, tmpY, tmpZ) == true);
-            
+            while (ShouldIStay(r, tmp) == true);
+
+            result.Values.InsertRange(0, r);
+
             return result;
         }
 
@@ -47,11 +46,17 @@ namespace Geronimus.Core.Methods
         /// Return true if should stay.
         /// </summary>
         /// <returns>If the algorithm should stop or continue iterating.</returns>
-        private bool ShouldIStayOrShouldIGo(LinearSystemResult currentResult, double x, double y, double z)
+        private bool ShouldIStay(double[] a, double[] b)
         {
-            return (currentResult.X - x).InvertIfNegative() > this.ErrorRate
-                && (currentResult.Y - y).InvertIfNegative() > this.ErrorRate
-                && (currentResult.Z - z).InvertIfNegative() > this.ErrorRate;
+            for (int i = 0; i < a.Length; i++)
+            {
+                if ((a[i] - b[i]).InvertIfNegative() > this.ErrorRate)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

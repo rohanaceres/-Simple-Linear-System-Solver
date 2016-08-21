@@ -47,9 +47,11 @@ namespace Geronimus.Core.Methods
 
             if (this.DecimalPlacesToRound.HasValue == true)
             {
-                result.X = Math.Round(result.X, this.DecimalPlacesToRound.Value);
-                result.Y = Math.Round(result.Y, this.DecimalPlacesToRound.Value);
-                result.Z = Math.Round(result.Z, this.DecimalPlacesToRound.Value);
+                for (int i = 0; i < result.Values.Count; i++)
+                {
+                    result.Values[i] = Math.Round(result.Values[i], this.DecimalPlacesToRound.Value);
+                }
+
                 result.IsRounded = true;
             }
 

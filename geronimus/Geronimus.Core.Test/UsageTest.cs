@@ -19,7 +19,7 @@ namespace Geronimus.Core.Test
                 .AddErrorRate(0.0001)
                 .SolveIt();
 
-            Debug.WriteLine("Jacobi: {" + result.X + ", " + result.Y + ", " + result.Z + "} Total de iterações: " + result.Iterations);
+            Debug.WriteLine("Jacobi: " + result.ToString());
         }
         [TestMethod]
         public void Jacobi_test()
@@ -33,11 +33,11 @@ namespace Geronimus.Core.Test
                 .IsRound(10)
                 .SolveIt();
 
-            Debug.WriteLine("Jacobi: {" + result.X + ", " + result.Y + ", " + result.Z + "} Total de iterações: " + result.Iterations);
+            Debug.WriteLine("Jacobi: " + result.ToString());
 
-            Assert.AreEqual(result.X, 1);
-            Assert.AreEqual(result.Y, -1);
-            Assert.AreEqual(result.Z, 1);
+            Assert.AreEqual(result.Values[0], 1);
+            Assert.AreEqual(result.Values[1], -1);
+            Assert.AreEqual(result.Values[2], 1);
         }
         [TestMethod]
         public void Jacobi_vs_GaussSiedel()
@@ -51,9 +51,9 @@ namespace Geronimus.Core.Test
                .IsRound(10)
                .SolveIt();
 
-            Assert.AreEqual(resultj.X, 1);
-            Assert.AreEqual(resultj.Y, -3);
-            Assert.AreEqual(resultj.Z, 2);
+            Assert.AreEqual(resultj.Values[0], 1);
+            Assert.AreEqual(resultj.Values[1], -3);
+            Assert.AreEqual(resultj.Values[2], 2);
 
             LinearSystemResult resultgs = new GaussSeidelMethod()
                 .AddDimension(3)
@@ -64,12 +64,12 @@ namespace Geronimus.Core.Test
                 .IsRound(10)
                 .SolveIt();
 
-            Debug.WriteLine("Jacobi: {" + resultj.X + ", " + resultj.Y + ", " + resultj.Z + "} Total de iterações: " + resultj.Iterations);
-            Debug.WriteLine("Gauss-Siedel: {" + resultgs.X + ", " + resultgs.Y + ", " + resultgs.Z + "} Total de iterações: " + resultgs.Iterations);
+            Debug.WriteLine("Jacobi: " + resultj.ToString());
+            Debug.WriteLine("Gauss-Siedel: " + resultgs.ToString());
 
-            Assert.AreEqual(resultj.X, resultgs.X);
-            Assert.AreEqual(resultj.Y, resultgs.Y);
-            Assert.AreEqual(resultj.Z, resultgs.Z);
+            Assert.AreEqual(resultj.Values[0], resultgs.Values[0]);
+            Assert.AreEqual(resultj.Values[1], resultgs.Values[1]);
+            Assert.AreEqual(resultj.Values[2], resultgs.Values[2]);
             Assert.IsTrue(resultgs.Iterations < resultj.Iterations);
         }
         [TestMethod]
@@ -93,8 +93,8 @@ namespace Geronimus.Core.Test
                 .IsRound(4)
                 .SolveIt();
 
-            Debug.WriteLine("Jacobi: \t\t{" + resultj.X + ", " + resultj.Y + ", " + resultj.Z + "} Total de iterações: " + resultj.Iterations);
-            Debug.WriteLine("Gauss-Siedel: \t{" + resultgs.X + ", " + resultgs.Y + ", " + resultgs.Z + "} Total de iterações: " + resultgs.Iterations);
+            Debug.WriteLine("Jacobi: " + resultj.ToString());
+            Debug.WriteLine("Gauss-Siedel: " + resultgs.ToString());
         }
         [TestMethod]
         public void GaussSiedel_parachute_problem()
@@ -108,11 +108,11 @@ namespace Geronimus.Core.Test
                 .IsRound(4)
                 .SolveIt();
 
-            Debug.WriteLine("Gauss-Siedel: {" + resultgs.X + ", " + resultgs.Y + ", " + resultgs.Z + "} Total de iterações: " + resultgs.Iterations);
+            Debug.WriteLine("Gauss-Siedel: " + resultgs.ToString());
 
-            Assert.AreEqual(resultgs.X, 8.5941);
-            Assert.AreEqual(resultgs.Y, 34.4118);
-            Assert.AreEqual(resultgs.Z, 36.7647);
+            Assert.AreEqual(resultgs.Values[0], 8.5941);
+            Assert.AreEqual(resultgs.Values[1], 34.4118);
+            Assert.AreEqual(resultgs.Values[2], 36.7647);
         }
         [TestMethod]
         public void GaussElimination_test()
@@ -125,7 +125,7 @@ namespace Geronimus.Core.Test
                 .IsRound(4)
                 .SolveIt();
 
-            Debug.WriteLine("Gauss-Jordan: {" + result.X + ", " + result.Y + ", " + result.Z + "} Total de iterações: " + result.Iterations);
+            Debug.WriteLine("Gauss-Jordan: " + result.ToString());
         }
     }
 }
