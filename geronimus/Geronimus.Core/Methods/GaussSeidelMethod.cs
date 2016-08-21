@@ -11,7 +11,6 @@ namespace Geronimus.Core.Methods
             LinearSystemResult result = new LinearSystemResult();
 
             double tmpX = 0, tmpY = 0, tmpZ = 0;
-            int iterations = 0;
 
             do
             {
@@ -34,17 +33,12 @@ namespace Geronimus.Core.Methods
                      + this.System.Equations[2].ConstantResult)
                      / this.System.Equations[2].Z;
 
-                iterations++;
+                result.Iterations++;
 
                 Debug.WriteLine("Iteration: {0}, {1}, {2}", result.X, result.Y, result.Z);
             }
             while (ShouldIStayOrShouldIGo(result, tmpX, tmpY, tmpZ) == true);
-
-            result.X = tmpX;
-            result.Y = tmpY;
-            result.Z = tmpZ;
-            result.Iterations = iterations;
-
+            
             return result;
         }
 
