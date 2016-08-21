@@ -40,7 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions\DoubleExtensions.cs" />
+    <Compile Include="Extension\DoubleExtensions.cs" />
+    <Compile Include="Extension\LinearSystemExtension.cs" />
     <Compile Include="Methods\AbstractMethod.cs" />
     <Compile Include="Methods\GaussJordanMethod.cs" />
     <Compile Include="Methods\GaussSeidelMethod.cs" />

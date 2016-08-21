@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Geronimus.Core.Model
+﻿namespace Geronimus.Core.Model
 {
     /// <summary>
     /// A linear equation with 3 variables.

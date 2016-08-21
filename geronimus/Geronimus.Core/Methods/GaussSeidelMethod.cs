@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace Geronimus.Core.Methods
 {
-    public class GaussSeidelMethod : AbstractMethod
+    public sealed class GaussSeidelMethod : AbstractMethod
     {
         protected override LinearSystemResult SolveItByConcrete()
         {

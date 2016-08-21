@@ -1,14 +1,12 @@
 ﻿using Geronimus.Core.Model;
 using Geronimus.Core.Extensions;
-using System;
-using System.Diagnostics;
 
 namespace Geronimus.Core.Methods
 {
     /// <summary>
     /// Jacobi method to solve systems of linear equations.
     /// </summary>
-    public class JacobiMethod : AbstractMethod
+    public sealed class JacobiMethod : AbstractMethod
     {
         /// <summary>
         /// Solve the <see cref="System"/>.
