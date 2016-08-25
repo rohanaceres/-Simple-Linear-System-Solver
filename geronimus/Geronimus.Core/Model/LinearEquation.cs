@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-namespace Geronimus.Core.Model
+namespace Geronimo.Core.Model
 {
     /// <summary>
     /// A linear equation with 3 variables.

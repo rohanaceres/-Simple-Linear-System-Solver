@@ -1,8 +1,8 @@
-﻿using Geronimus.Core.Extensions;
-using Geronimus.Core.Model;
+﻿using Geronimo.Core.Extensions;
+using Geronimo.Core.Model;
 using System.Diagnostics;
 
-namespace Geronimus.Core.Methods
+namespace Geronimo.Core.Methods
 {
     public sealed class GaussSeidelMethod : AbstractMethod
     {

@@ -1,9 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Geronimus.Core.Model;
+using Geronimo.Core.Model;
+using Geronimo.Core.Methods;
 using System.Diagnostics;
-using Geronimus.Core.Methods;
 
-namespace Geronimus.Core.Test
+namespace Geronimo.Core.Test
 {
     [TestClass]
     public class UsageTest

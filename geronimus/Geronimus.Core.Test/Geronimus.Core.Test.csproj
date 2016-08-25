@@ -6,8 +6,8 @@
     <ProjectGuid>{C4C676C5-20B2-4665-80B6-D6D956D441BC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Geronimus.Core.Test</RootNamespace>
-    <AssemblyName>Geronimus.Core.Test</AssemblyName>
+    <RootNamespace>Geronimo.Core.Test</RootNamespace>
+    <AssemblyName>Geronimo.Core.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -50,14 +50,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Extension\LinearSystemExtensionTest.cs" />
     <Compile Include="UsageTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Geronimus.Core\Geronimus.Core.csproj">
+    <ProjectReference Include="..\Geronimus.Core\Geronimo.Core.csproj">
       <Project>{b00b0317-0fec-4de6-8d23-0cc45b98f4ad}</Project>
-      <Name>Geronimus.Core</Name>
+      <Name>Geronimo.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

@@ -1,7 +1,7 @@
-﻿using Geronimus.Core.Model;
-using Geronimus.Core.Extensions;
+﻿using Geronimo.Core.Model;
+using Geronimo.Core.Extensions;
 
-namespace Geronimus.Core.Methods
+namespace Geronimo.Core.Methods
 {
     /// <summary>
     /// Jacobi method to solve systems of linear equations.

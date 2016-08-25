@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 
-namespace Geronimus.Core.Model
+namespace Geronimo.Core.Model
 {
     /// <summary>
     /// A linear system solver result.

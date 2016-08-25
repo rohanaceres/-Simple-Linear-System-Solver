@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Geronimus.Core.Model
+namespace Geronimo.Core.Model
 {
     /// <summary>
     /// A linear system with a maximum of 3 equations.

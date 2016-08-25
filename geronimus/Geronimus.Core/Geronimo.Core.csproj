@@ -7,8 +7,8 @@
     <ProjectGuid>{B00B0317-0FEC-4DE6-8D23-0CC45B98F4AD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Geronimus.Core</RootNamespace>
-    <AssemblyName>Geronimus.Core</AssemblyName>
+    <RootNamespace>Geronimo.Core</RootNamespace>
+    <AssemblyName>Geronimo.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

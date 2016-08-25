@@ -1,4 +1,4 @@
-﻿namespace Geronimus.Core.Extensions
+﻿namespace Geronimo.Core.Extensions
 {
     /// <summary>
     /// Extension to make it easy simple operations on double variables.
