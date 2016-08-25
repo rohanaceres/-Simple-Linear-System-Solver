@@ -18,7 +18,7 @@ namespace Geronimo.Core.Methods
             double[] rawResult = this.BackSubstitution();
 
             LinearSystemResult result = new LinearSystemResult(rawResult);
-            result.Iterations = this.Dimension.Value;
+            result.Iterations = 1;
 
             return result;
         }
