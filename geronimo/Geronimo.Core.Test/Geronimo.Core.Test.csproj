@@ -54,7 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Geronimus.Core\Geronimo.Core.csproj">
+    <ProjectReference Include="..\Geronimo.Core\Geronimo.Core.csproj">
       <Project>{b00b0317-0fec-4de6-8d23-0cc45b98f4ad}</Project>
       <Name>Geronimo.Core</Name>
     </ProjectReference>
