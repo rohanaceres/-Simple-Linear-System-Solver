@@ -1,5 +1,5 @@
 ﻿using Geronimo.Core.Rules;
-using System.Collections.Generic;
+using Geronimo.Core.Rules.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Geronimo.Core.Test
@@ -17,7 +17,7 @@ namespace Geronimo.Core.Test
             b = 0.8;
             n = 500;
 
-            double trResult = new TrapezoidalRule(a, b, n)
+            DerivativeResult trResult = new TrapezoidalRule(a, b, n)
                 .AddToEquation(+0.2, 0)
                 .AddToEquation(+25,  1)
                 .AddToEquation(-200, 2)

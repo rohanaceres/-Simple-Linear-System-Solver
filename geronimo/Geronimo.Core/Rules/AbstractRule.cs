@@ -13,7 +13,7 @@ namespace Geronimo.Core.Rules
             this.Equation = new Equation();
         }
 
-        public double SolveIt ()
+        public DerivativeResult SolveIt ()
         {
             return this.SolveItByConcrete();
         }
@@ -33,6 +33,6 @@ namespace Geronimo.Core.Rules
 
             return result;
         }
-        protected abstract double SolveItByConcrete();
+        protected abstract DerivativeResult SolveItByConcrete();
     }
 }

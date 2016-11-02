@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Geronimo.Core.Rules.Model;
 using System.Diagnostics;
 
 namespace Geronimo.Core.Rules
@@ -17,23 +17,31 @@ namespace Geronimo.Core.Rules
             this.IterationNumber = n;
             this.Heigth = (b - a)/n;
         }
-        protected override double SolveItByConcrete()
+        protected override DerivativeResult SolveItByConcrete()
         {
             double sum = this.SolveEquationAt(0);
 
+            // No final, deve ser subtraído do resultado para gerar o erro relativo!
+            double i = this.B * (this.SolveEquationAt(this.A) + this.SolveEquationAt(this.B)) / 2;
+
             this.B = this.A + this.Heigth;
 
-            for (int i = 1; i < this.IterationNumber; i++)
+            for (int j = 1; j < this.IterationNumber; j++)
             {
-                Debug.WriteLine("{0} > a={1}, b={2}, sum={3}", i, this.A, this.B, sum);
-
+                // TODO: Lançar evento para mostrar na view os valores de iteração! :/
                 sum += 2 * this.SolveEquationAt(this.B);
                 this.B += this.Heigth;
             }
-
+            
             sum += this.SolveEquationAt(this.B);
 
-            return this.Heigth * (sum / 2);
+            double result = this.Heigth * (sum / 2);
+
+            return new DerivativeResult
+            {
+                Result = result,
+                RelativeError = result - i
+            };
         }
     }
 }
