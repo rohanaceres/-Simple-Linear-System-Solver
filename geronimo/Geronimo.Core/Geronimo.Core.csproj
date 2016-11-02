@@ -41,14 +41,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extension\DoubleExtensions.cs" />
-    <Compile Include="Methods\AbstractMethod.cs" />
-    <Compile Include="Methods\GaussJordanMethod.cs" />
-    <Compile Include="Methods\GaussSeidelMethod.cs" />
-    <Compile Include="Model\LinearEquation.cs" />
-    <Compile Include="Model\LinearSystem.cs" />
-    <Compile Include="Model\LinearSystemResult.cs" />
-    <Compile Include="Methods\JacobiMethod.cs" />
+    <Compile Include="LinearEquation\Methods\AbstractMethod.cs" />
+    <Compile Include="LinearEquation\Methods\GaussJordanMethod.cs" />
+    <Compile Include="LinearEquation\Methods\GaussSeidelMethod.cs" />
+    <Compile Include="LinearEquation\Model\LinearEquation.cs" />
+    <Compile Include="LinearEquation\Model\LinearSystem.cs" />
+    <Compile Include="LinearEquation\Model\LinearSystemResult.cs" />
+    <Compile Include="LinearEquation\Methods\JacobiMethod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Derivative\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

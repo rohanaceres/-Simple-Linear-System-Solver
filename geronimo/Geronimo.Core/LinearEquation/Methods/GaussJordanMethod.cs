@@ -3,7 +3,7 @@ using Geronimo.Core.Extensions;
 using System.Diagnostics;
 using System;
 
-namespace Geronimo.Core.Methods
+namespace Geronimo.Core.LinearEquation.Methods
 {
     /// <summary>
     /// Also known as Gauss-Jordan or Gaussian elimination to solve

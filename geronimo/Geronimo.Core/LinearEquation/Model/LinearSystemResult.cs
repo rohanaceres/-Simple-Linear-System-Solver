@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 
-namespace Geronimo.Core.Model
+namespace Geronimo.Core.LinearEquation.Model
 {
     /// <summary>
     /// A linear system solver result.

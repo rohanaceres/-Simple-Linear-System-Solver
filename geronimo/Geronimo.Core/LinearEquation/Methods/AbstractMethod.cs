@@ -1,7 +1,7 @@
 ﻿using Geronimo.Core.Model;
 using System;
 
-namespace Geronimo.Core.Methods
+namespace Geronimo.Core.LinearEquation.Methods
 {
     /// <summary>
     /// Abstract method to solve systems of linear equations.
