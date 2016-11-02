@@ -1,9 +1,8 @@
-﻿using Geronimo.Core.Model;
-using Geronimo.Core.Extensions;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System;
+using Geronimo.Core.Model;
 
-namespace Geronimo.Core.LinearEquation.Methods
+namespace Geronimo.Core.Methods
 {
     /// <summary>
     /// Also known as Gauss-Jordan or Gaussian elimination to solve

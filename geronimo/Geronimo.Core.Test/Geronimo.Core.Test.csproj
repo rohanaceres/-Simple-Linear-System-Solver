@@ -50,8 +50,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UsageTest.cs" />
+    <Compile Include="MethodUsageTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RuleUsageTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Geronimo.Core\Geronimo.Core.csproj">

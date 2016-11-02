@@ -40,14 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Rules\AbstractRule.cs" />
+    <Compile Include="Rules\Model\Equation.cs" />
+    <Compile Include="Rules\TrapezoidalRule.cs" />
     <Compile Include="Extension\DoubleExtensions.cs" />
-    <Compile Include="LinearEquation\Methods\AbstractMethod.cs" />
-    <Compile Include="LinearEquation\Methods\GaussJordanMethod.cs" />
-    <Compile Include="LinearEquation\Methods\GaussSeidelMethod.cs" />
-    <Compile Include="LinearEquation\Model\LinearEquation.cs" />
-    <Compile Include="LinearEquation\Model\LinearSystem.cs" />
-    <Compile Include="LinearEquation\Model\LinearSystemResult.cs" />
-    <Compile Include="LinearEquation\Methods\JacobiMethod.cs" />
+    <Compile Include="Methods\AbstractMethod.cs" />
+    <Compile Include="Methods\GaussJordanMethod.cs" />
+    <Compile Include="Methods\GaussSeidelMethod.cs" />
+    <Compile Include="Methods\Model\LinearEquation.cs" />
+    <Compile Include="Methods\Model\LinearSystem.cs" />
+    <Compile Include="Methods\Model\LinearSystemResult.cs" />
+    <Compile Include="Methods\JacobiMethod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

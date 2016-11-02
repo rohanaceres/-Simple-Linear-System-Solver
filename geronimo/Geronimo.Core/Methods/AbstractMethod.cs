@@ -1,7 +1,7 @@
 ﻿using Geronimo.Core.Model;
 using System;
 
-namespace Geronimo.Core.LinearEquation.Methods
+namespace Geronimo.Core.Methods
 {
     /// <summary>
     /// Abstract method to solve systems of linear equations.
@@ -117,7 +117,9 @@ namespace Geronimo.Core.LinearEquation.Methods
             }
             if (equation.Variables.Count != this.Dimension + 1)
             {
-                throw new ArgumentException("Your system dimension is " + this.Dimension.Value + ", hence your equation must have " + (this.Dimension + 1) + " numbers.");
+                throw new ArgumentException("Your system dimension is " + 
+                    this.Dimension.Value + ", hence your equation must have " 
+                    + (this.Dimension + 1) + " numbers.");
             }
         }
     }

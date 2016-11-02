@@ -1,12 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Geronimo.Core.Methods;
 using Geronimo.Core.Model;
-using Geronimo.Core.Methods;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
 
 namespace Geronimo.Core.Test
 {
     [TestClass]
-    public class UsageTest
+    public class MethodUsageTest
     {
         [TestMethod]
         public void Jacobi_parachute_problem()

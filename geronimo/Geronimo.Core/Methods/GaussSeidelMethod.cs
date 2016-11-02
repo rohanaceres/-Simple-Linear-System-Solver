@@ -1,8 +1,7 @@
 ﻿using Geronimo.Core.Extensions;
 using Geronimo.Core.Model;
-using System.Diagnostics;
 
-namespace Geronimo.Core.LinearEquation.Methods
+namespace Geronimo.Core.Methods
 {
     public sealed class GaussSeidelMethod : AbstractMethod
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Geronimo.Core.LinearEquation.Model
+namespace Geronimo.Core.Model
 {
     /// <summary>
     /// A linear equation with 3 variables.
