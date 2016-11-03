@@ -1,15 +1,16 @@
-﻿using Geronimo.Core.Rules.Model;
+﻿using System;
+using Geronimo.Core.Rules.Model;
 
 namespace Geronimo.Core.Rules
 {
-    public sealed class Simpson13Rule : AbstractRule
+    public class Simpson38Rule : AbstractRule
     {
         public double A { get; set; }
         public double B { get; set; }
         public int IterationNumber { get; set; }
         public double Heigth { get; set; }
 
-        public Simpson13Rule(double a, double b, int n)
+        public Simpson38Rule(double a, double b, int n)
         {
             this.A = a;
             this.B = b;
@@ -21,7 +22,8 @@ namespace Geronimo.Core.Rules
         {
             double sum = this.SolveEquationAt(0);
 
-            double i = this.B * (this.SolveEquationAt(this.A) + 4 * this.SolveEquationAt((this.B - this.A) / 2) + this.SolveEquationAt(this.B)) / 6;
+            // TODO: Continuar daqui. Página 519
+            double i = this.B * (this.SolveEquationAt(this.A) + 4 * this.SolveEquationAt((this.B - this.A) / 3) + this.SolveEquationAt(this.B)) / 6;
 
             for (int j = 1; j <= this.IterationNumber - 2; j += 2)
             {
@@ -35,7 +37,7 @@ namespace Geronimo.Core.Rules
             {
                 Result = result,
                 RelativeError = result - i
-            };
+            };  
         }
     }
 }
