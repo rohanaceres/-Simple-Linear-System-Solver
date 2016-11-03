@@ -1,5 +1,4 @@
 ﻿using Geronimo.Core.Rules.Model;
-using System.Diagnostics;
 
 namespace Geronimo.Core.Rules
 {
