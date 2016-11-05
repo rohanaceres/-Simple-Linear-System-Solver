@@ -34,7 +34,7 @@ namespace Geronimo.Core.Test
 
             a = 0;
             b = 0.8;
-            n = 500;
+            n = 1500;
 
             DerivativeResult s13Result = new Simpson13Rule(a, b, n)
                 .AddToEquation(+0.2, 0)
@@ -44,6 +44,8 @@ namespace Geronimo.Core.Test
                 .AddToEquation(-900, 4)
                 .AddToEquation(+400, 5)
                 .SolveIt();
+            Assert.AreEqual(s13Result.Result, 1.6405688888880265);
+            Assert.AreEqual(s13Result.RelativeError, 0.27310222222135216);
         }
         [TestMethod]
         public void Simpson38Rule_test()
@@ -53,7 +55,7 @@ namespace Geronimo.Core.Test
 
             a = 0;
             b = 0.8;
-            n = 500;
+            n = 1500;
 
             DerivativeResult s38Result = new Simpson38Rule(a, b, n)
                 .AddToEquation(+0.2, 0)
@@ -63,6 +65,8 @@ namespace Geronimo.Core.Test
                 .AddToEquation(-900, 4)
                 .AddToEquation(+400, 5)
                 .SolveIt();
+            Assert.AreEqual(s38Result.Result, 1.640573333331393);
+            Assert.AreEqual(s38Result.RelativeError, 0.12140296296101516);
         }
     }
 }

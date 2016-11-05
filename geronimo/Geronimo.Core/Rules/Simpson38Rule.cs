@@ -17,26 +17,41 @@ namespace Geronimo.Core.Rules
             this.IterationNumber = n;
             this.Heigth = (b - a) / n;
         }
-
+        // Thanks to: https://onedrive.live.com/view.aspx?cid=fbeb5ec903ef1e67&id=documents&resid=FBEB5EC903EF1E67%2174691&app=Word&authkey=AMp8PL_gFTSmmfo&
         protected override DerivativeResult SolveItByConcrete()
         {
             double sum = this.SolveEquationAt(0);
 
-            // TODO: Continuar daqui. Página 519
-            double i = this.B * (this.SolveEquationAt(this.A) + 4 * this.SolveEquationAt((this.B - this.A) / 3) + this.SolveEquationAt(this.B)) / 6;
+            double x2, x3;
+            x2 = this.B / 3;
+            x3 = 2 * this.B / 3;
 
-            for (int j = 1; j <= this.IterationNumber - 2; j += 2)
+            double i = this.B
+                * (this.SolveEquationAt(this.A) + 3 * (this.SolveEquationAt(x2) + this.SolveEquationAt(x3))
+                + this.SolveEquationAt(this.B)) / 8;
+
+            for (int j = 1; j <= this.IterationNumber - 1; j++)
             {
-                sum += 4 * this.SolveEquationAt(this.Heigth * j) + 2 * this.SolveEquationAt(this.Heigth * (j + 1));
-            }
-            sum += 4 * this.SolveEquationAt(this.Heigth * (this.IterationNumber - 1)) + this.SolveEquationAt(this.Heigth * this.IterationNumber);
+                double x = this.A + (this.Heigth * j);
 
-            double result = this.Heigth * (sum / 3);
+                if (j % 3 == 0)
+                {
+                    sum += 2 * this.SolveEquationAt(x);
+                }
+                else
+                {
+                    sum += 3 * this.SolveEquationAt(x);
+                }
+            }
+
+            sum += this.SolveEquationAt(this.A) + this.SolveEquationAt(this.B);
+            double result = sum * (3 * this.Heigth) / 8;
 
             return new DerivativeResult
             {
                 Result = result,
-                RelativeError = result - i
+                RelativeError = result - i,
+                RelativeErrorPercentage = string.Format("{0:0.00}% de erro", 100 * (result - i) / result)
             };  
         }
     }
