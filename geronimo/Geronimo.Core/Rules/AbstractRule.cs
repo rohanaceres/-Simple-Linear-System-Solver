@@ -7,6 +7,7 @@ namespace Geronimo.Core.Rules
     public abstract class AbstractRule
     {
         public Equation Equation { get; set; }
+        public Func<double, double> SolveEquationAtImpl { get; set; }
 
         public AbstractRule()
         {
@@ -24,14 +25,21 @@ namespace Geronimo.Core.Rules
         }
         protected double SolveEquationAt (double index)
         {
-            double result = 0;
-
-            foreach (KeyValuePair<double, int> currentItem in this.Equation.Items)
+            if (this.SolveEquationAtImpl != null)
             {
-                result += currentItem.Key * (Math.Pow(index, currentItem.Value));
+                return this.SolveEquationAtImpl(index);
             }
+            else
+            {
+                double result = 0;
 
-            return result;
+                foreach (KeyValuePair<double, int> currentItem in this.Equation.Items)
+                {
+                    result += currentItem.Key * (Math.Pow(index, currentItem.Value));
+                }
+
+                return result;
+            }
         }
         protected abstract DerivativeResult SolveItByConcrete();
     }

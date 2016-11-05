@@ -1,5 +1,6 @@
 ﻿using System;
 using Geronimo.Core.Rules.Model;
+using Geronimo.Core.Extensions;
 
 namespace Geronimo.Core.Rules
 {
@@ -21,9 +22,19 @@ namespace Geronimo.Core.Rules
         protected override DerivativeResult SolveItByConcrete()
         {
             double sum = this.SolveEquationAt(0);
-            double i = this.B 
-                * (this.SolveEquationAt(this.A) + 4 * this.SolveEquationAt((this.B - this.A) / 2) 
-                + this.SolveEquationAt(this.B)) / 6;
+
+            // Define 3 pontos igualmente espaçados
+            double x0, x1, x2, strip;
+
+            strip = (this.B.InvertIfNegative() + this.A.InvertIfNegative()) / 2;
+            x0 = this.A;
+            x1 = x0 + strip;
+            x2 = this.B;
+
+            // Resolve equação 21.15
+            double i = (this.B - this.A)
+                * (this.SolveEquationAt(x0) + 4 * this.SolveEquationAt(x1) 
+                + this.SolveEquationAt(x2)) / 6;
 
             for (int j = 1; j <= this.IterationNumber - 1; j++)
             {
@@ -45,8 +56,8 @@ namespace Geronimo.Core.Rules
             return new DerivativeResult
             {
                 Result = result,
-                RelativeError = result - i,
-                RelativeErrorPercentage = string.Format("{0:0.00}% de erro", 100 * (result - i) / result)
+                RelativeError = (result - i).InvertIfNegative(),
+                RelativeErrorPercentage = string.Format("{0:0.00}% de erro", 100 * (result.InvertIfNegative() - i.InvertIfNegative()) / result.InvertIfNegative())
             };
         }
     }

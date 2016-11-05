@@ -1,5 +1,5 @@
-﻿using System;
-using Geronimo.Core.Rules.Model;
+﻿using Geronimo.Core.Rules.Model;
+using Geronimo.Core.Extensions;
 
 namespace Geronimo.Core.Rules
 {
@@ -22,13 +22,17 @@ namespace Geronimo.Core.Rules
         {
             double sum = this.SolveEquationAt(0);
 
-            double x2, x3;
-            x2 = this.B / 3;
-            x3 = 2 * this.B / 3;
+            double x0, x1, x2, x3, strip;
+            strip = (this.B.InvertIfNegative() + this.A.InvertIfNegative()) / 3;
+            x0 = this.A;
+            x1 = x0 + strip;
+            x2 = x1 + strip;
+            x3 = this.B;
 
-            double i = this.B
-                * (this.SolveEquationAt(this.A) + 3 * (this.SolveEquationAt(x2) + this.SolveEquationAt(x3))
-                + this.SolveEquationAt(this.B)) / 8;
+            // Resolve equação 21.20
+            double i = (this.B - this.A)
+                * (this.SolveEquationAt(x0) + 3 * (this.SolveEquationAt(x1) + this.SolveEquationAt(x2))
+                + this.SolveEquationAt(x3)) / 8;
 
             for (int j = 1; j <= this.IterationNumber - 1; j++)
             {
@@ -50,8 +54,8 @@ namespace Geronimo.Core.Rules
             return new DerivativeResult
             {
                 Result = result,
-                RelativeError = result - i,
-                RelativeErrorPercentage = string.Format("{0:0.00}% de erro", 100 * (result - i) / result)
+                RelativeError = (result - i).InvertIfNegative(),
+                RelativeErrorPercentage = string.Format("{0:0.00}% de erro", 100 * (result - i).InvertIfNegative() / result)
             };  
         }
     }
